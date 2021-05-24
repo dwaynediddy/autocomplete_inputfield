@@ -37,7 +37,7 @@ function App() {
   }
   console.log('matches', matches)
   setText(text)
-  setSuggestions(suggestions)
+  setSuggestions(matches)
  }
  
  return (
@@ -53,6 +53,9 @@ function App() {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      {suggestions && suggestions.map((suggestion, i) => 
+        <div key={i}>{suggestion.name}</div>
+      )}
     </div>
   )
 }
