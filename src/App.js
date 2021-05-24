@@ -39,6 +39,12 @@ function App() {
   setText(text)
   setSuggestions(matches)
  }
+
+ const onSuggestHandler = (text) => {
+   setText(text)
+   setSuggestions([])
+
+ }
  
  return (
     <div className="App">
@@ -49,12 +55,23 @@ function App() {
             type="text" 
             onChange={e => onChangeHandler(e.target.value)} 
             value={text}
+            onBlur={() => {
+              setTimeout(() => {
+                setSuggestions([])
+
+              }, 100)
+            }}
             />
         </label>
         <input type="submit" value="Submit" />
       </form>
       {suggestions && suggestions.map((suggestion, i) => 
-        <div key={i}>{suggestion.name}</div>
+        <div 
+          key={i}
+          onClick={() => onSuggestHandler(suggestion.name)}
+          >
+            {suggestion.name}
+            </div>
       )}
     </div>
   )
