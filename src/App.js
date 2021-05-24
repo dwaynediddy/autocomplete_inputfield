@@ -31,7 +31,7 @@ function App() {
      
        const regex = new RegExp(`${text}`, 'gi')
  
-       return name.email.matches(regex)
+       return name.name.match(regex)
       })
 
   }
