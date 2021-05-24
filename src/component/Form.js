@@ -28,8 +28,8 @@ function Form() {
       matches = name.filter(name => {
      
        const regex = new RegExp(`${text}`, 'gi')
- 
-       return name.name.match(regex)
+ //can change data from user name to name email etc to fetch other data
+       return name.username.match(regex)
       })
 
   }
@@ -65,10 +65,11 @@ function Form() {
       </form>
       {suggestions && suggestions.map((suggestion, i) => 
         <div 
+        //fetches username can be changed with function to feth other data in api
           key={i}
-          onClick={() => onSuggestHandler(suggestion.name)}
+          onClick={() => onSuggestHandler(suggestion.username)}
           >
-            {suggestion.name}
+            {suggestion.username}
             </div>
       )}
     </div>
