@@ -4,8 +4,9 @@ import axios from 'axios'
 
 
 function App() {
- const[ name, setName ] = useState([])
- const [text, setText ] = useState('')
+ const [ name, setName ] = useState([])
+ const [ text, setText ] = useState('')
+ const [ suggestions, setSuggestions ] = useState([])
 
  useEffect(() => {
    //load api data and set it to state
@@ -21,23 +22,22 @@ function App() {
  }, [])
 
  
-//  //check for matching changes
+//check for matching changes
  const onChangeHandler = text => {
-   setText(text)
-  //  setSuggestions(suggestions)
-
-  //  let suggestions = []
-
-  //  if(text.length > 0) {
-  //    suggestions = name.filter(name => {
+    let matches = []
     
-  //     const regex = new RegExp(`${text}`, 'gi')
+    if(text.length > 0) {
+      matches = name.filter(name => {
+     
+       const regex = new RegExp(`${text}`, 'gi')
+ 
+       return name.email.matches(regex)
+      })
 
-  //     return name.name.suggestions(regex)
-  //    })
-  //  }
-//   //  setSuggestions(suggestions)
-//   //  setText(text)
+  }
+  console.log('matches', matches)
+  setText(text)
+  setSuggestions(suggestions)
  }
  
  return (
@@ -54,7 +54,7 @@ function App() {
         <input type="submit" value="Submit" />
       </form>
     </div>
-  );
+  )
 }
 
 export default App;
